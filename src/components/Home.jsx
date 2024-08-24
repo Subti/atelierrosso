@@ -5,7 +5,7 @@ export default function Home() {
     <div className="App">
       <header className="App-header">
         <img className="signboard" src="/images/Atelier_Rosso_SignBoard.svg" alt="" />
-        <h1>WORK IN PROGRESS - WILL GO LIVE SOON!</h1>
+        <h1>WORK IN PROGRESS - WILL GO LIVE SOON</h1>
       </header>
     </div>
   )
