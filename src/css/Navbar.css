@@ -1,0 +1,44 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  /* Space between logo and nav items */
+  align-items: center;
+  background-color: #d2b48c;
+  padding: 0.5rem 1rem;
+  /* Adjust padding to reduce space */
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  max-height: 8rem;
+  /* Adjust max-height to fit the navbar */
+  min-height: 6rem;
+  /* Ensure the SVG doesn't get too small */
+  width: auto;
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-left: 1.5rem;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #824707;
+}
