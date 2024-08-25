@@ -1,8 +1,1 @@
-.signboard {
-  width: 50%;
-  height: 50%;
-}
-
-body {
-  color: #824707;
-}
+.home{font-family:Arial,sans-serif;text-align:center;padding:20px}.hero{background-color:tan;color:#824707;padding:100px 20px;width:100%}.hero-content{display:inline-block;padding:20px}.about{background-color:#e6d3b1;padding:50px 20px;width:100%}.gelato,.pastries{display:flex;align-items:center;padding:50px 20px;width:100%}.gelato{background-color:#f4e8d1}.pastries{background-color:#e6d3b1}.text{flex:1;padding:20px}.image{flex:1;padding:20px}.image img{width:100%;height:auto;border-radius:10px}.contact{background-color:tan;color:#824707;padding:50px 20px;width:100%}.contact p{margin:5px 0}@media(max-width: 768px){.gelato,.pastries{flex-direction:column}.image,.text{padding:10px}}

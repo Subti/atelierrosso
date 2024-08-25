@@ -1,0 +1,81 @@
+@import 'variables';
+
+.home {
+  font-family: $font-family;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero {
+  background-color: $hero-bg-color;
+  color: $hero-text-color;
+  padding: $hero-padding;
+  width: 100%;
+}
+
+.hero-content {
+  display: inline-block;
+  padding: 20px;
+}
+
+.about {
+  background-color: $about-bg-color;
+  padding: $section-padding;
+  width: 100%;
+}
+
+.gelato,
+.pastries {
+  display: flex;
+  align-items: center;
+  padding: $section-padding;
+  width: 100%;
+}
+
+.gelato {
+  background-color: $gelato-bg-color;
+}
+
+.pastries {
+  background-color: $pastries-bg-color;
+}
+
+.text {
+  flex: 1;
+  padding: 20px;
+}
+
+.image {
+  flex: 1;
+  padding: 20px;
+}
+
+.image img {
+  width: 100%;
+  height: auto;
+  border-radius: $image-border-radius;
+}
+
+.contact {
+  background-color: $contact-bg-color;
+  color: $contact-text-color;
+  padding: $section-padding;
+  width: 100%;
+}
+
+.contact p {
+  margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+
+  .gelato,
+  .pastries {
+    flex-direction: column;
+  }
+
+  .image,
+  .text {
+    padding: 10px;
+  }
+}
