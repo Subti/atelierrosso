@@ -1,24 +1,43 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  /* Space between logo and nav items */
   align-items: center;
   background-color: #d2b48c;
   padding: 0.5rem 1rem;
-  /* Adjust padding to reduce space */
+  position: relative;
+  height: 9vh;
 }
 
 .navbar-brand {
   display: flex;
   align-items: center;
+  margin-left: 10%;
+  width: 30%;
+  height: 100%;
 }
 
 .navbar-brand img {
-  max-height: 8rem;
-  /* Adjust max-height to fit the navbar */
-  min-height: 6rem;
-  /* Ensure the SVG doesn't get too small */
-  width: auto;
+  height: 100%;
+  width: 100%;
+}
+
+.navbar-toggler {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.hamburger-icon {
+  font-size: 2rem;
+  color: #824707;
+  transition: transform 0.3s ease;
+}
+
+.hamburger-icon:hover {
+  transform: scale(1.2);
 }
 
 .navbar-nav {
@@ -26,6 +45,7 @@
   display: flex;
   margin: 0;
   padding: 0;
+  margin-right: 10%;
 }
 
 .nav-item {
@@ -33,12 +53,55 @@
 }
 
 .nav-link {
-  color: #fff;
+  color: #824707;
   text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s ease;
+  font-size: 1.2rem;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .nav-link:hover {
-  color: #824707;
+  color: #493015;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Media query for small devices */
+@media (max-width: 425px) {
+  .navbar-toggler {
+    display: block;
+  }
+
+  .navbar {
+    max-height: 4vh;
+  }
+
+  .navbar-brand {
+    margin-left: 0;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #d2b48c;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease-out;
+  }
+
+  .navbar-nav.open {
+    max-height: 500px;
+  }
+
+  .nav-item {
+    margin: 0;
+    margin-left: 12px;
+    text-align: left;
+    padding: 0.5rem 0;
+  }
+
+  .nav-link {
+    font-size: 1.5rem;
+  }
 }
