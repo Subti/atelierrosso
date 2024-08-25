@@ -1,9 +1,17 @@
 @import 'variables';
 
+// Ensure no extra padding or margin on parent containers
+#root,
+.home {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box; // Include padding and border in the element's total width and height
+}
+
 .home {
   font-family: $font-family;
   text-align: center;
-  padding: 20px;
 }
 
 .hero {
@@ -11,17 +19,33 @@
   color: $hero-text-color;
   padding: $hero-padding;
   width: 100%;
+  box-sizing: border-box; // Include padding and border in the element's total width and height
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // Adjust height as needed
 }
 
 .hero-content {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   padding: 20px;
+  box-sizing: border-box; // Include padding and border in the element's total width and height
 }
 
 .about {
   background-color: $about-bg-color;
   padding: $section-padding;
   width: 100%;
+  box-sizing: border-box; // Include padding and border in the element's total width and height
+
+  .about-content {
+    width: 50%;
+    margin: 0 auto;
+    box-sizing: border-box; // Include padding and border in the element's total width and height
+  }
 }
 
 .gelato,
@@ -30,6 +54,7 @@
   align-items: center;
   padding: $section-padding;
   width: 100%;
+  box-sizing: border-box; // Include padding and border in the element's total width and height
 }
 
 .gelato {
@@ -43,11 +68,27 @@
 .text {
   flex: 1;
   padding: 20px;
+  box-sizing: border-box; // Include padding and border in the element's total width and height
+
+  h2 {
+    margin-bottom: 10px; // Adjust this value as needed
+  }
+
+  h3 {
+    margin-top: 0; // Remove top margin
+    margin-bottom: 20px; // Adjust this value as needed
+  }
+
+  .confined-text {
+    width: 70%;
+    margin: 0 auto; // Center the text
+  }
 }
 
 .image {
   flex: 1;
   padding: 20px;
+  box-sizing: border-box; // Include padding and border in the element's total width and height
 }
 
 .image img {
@@ -61,10 +102,42 @@
   color: $contact-text-color;
   padding: $section-padding;
   width: 100%;
+  box-sizing: border-box; // Include padding and border in the element's total width and height
+
+  .contact-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .contact-info,
+  .location-info {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box; // Include padding and border in the element's total width and height
+  }
 }
 
 .contact p {
   margin: 5px 0;
+}
+
+.map-container {
+  position: relative;
+}
+
+.map-overlay {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 1000;
 }
 
 @media (max-width: 768px) {
@@ -77,5 +150,10 @@
   .image,
   .text {
     padding: 10px;
+    box-sizing: border-box; // Include padding and border in the element's total width and height
+  }
+
+  .contact-content {
+    flex-direction: column;
   }
 }

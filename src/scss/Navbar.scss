@@ -6,8 +6,15 @@
   align-items: center;
   background-color: $navbar-bg-color;
   padding: 0.5rem 1rem;
-  position: relative;
+  position: sticky;
+  top: 0;
   height: $navbar-height;
+  transition: height $navbar-transition;
+  z-index: 1000; // Ensure it stays on top
+}
+
+.navbar.shrink {
+  height: $navbar-shrink-height;
 }
 
 .navbar-brand {
@@ -73,7 +80,15 @@
   }
 
   .navbar {
-    max-height: $navbar-small-height;
+    height: $navbar-small-height;
+    position: sticky;
+    /* Ensure sticky positioning is applied */
+    top: 0;
+    /* Ensure it stays at the top */
+  }
+
+  .navbar.shrink {
+    height: $navbar-small-shrink-height;
   }
 
   .navbar-brand {
