@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -54,6 +54,40 @@ export default function Home() {
   const position = [45.4318, -75.5653]; // Coordinates for Ottawa
   const [showOverlay, setShowOverlay] = useState(false);
 
+  const gelatoTextRef = useRef(null);
+  const pastriesTextRef = useRef(null);
+  const gelatoImageRef = useRef(null);
+  const pastriesImageRef = useRef(null);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+    };
+
+    const observerCallback = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    if (gelatoTextRef.current) observer.observe(gelatoTextRef.current);
+    if (pastriesTextRef.current) observer.observe(pastriesTextRef.current);
+    if (gelatoImageRef.current) observer.observe(gelatoImageRef.current);
+    if (pastriesImageRef.current) observer.observe(pastriesImageRef.current);
+
+    return () => {
+      if (gelatoTextRef.current) observer.unobserve(gelatoTextRef.current);
+      if (pastriesTextRef.current) observer.unobserve(pastriesTextRef.current);
+      if (gelatoImageRef.current) observer.unobserve(gelatoImageRef.current);
+      if (pastriesImageRef.current) observer.unobserve(pastriesImageRef.current);
+    };
+  }, []);
+
   const handleMarkerClick = () => {
     window.open("https://www.google.com/maps/place/Atelier+Rosso+Desserterie/@45.4318857,-75.5680077,17z/data=!3m1!4b1!4m6!3m5!1s0x4cce0f007bd3f921:0xa59f8803263d9deb!8m2!3d45.4318857!4d-75.5654328!16s%2Fg%2F11ln52cxc7?entry=ttu&g_ep=EgoyMDI0MDgyMS4wIKXMDSoASAFQAw%3D%3D", "_blank");
   };
@@ -74,7 +108,7 @@ export default function Home() {
         </div>
       </section>
       <section className="gelato">
-        <div className="text">
+        <div className="text" ref={gelatoTextRef}>
           <h2>Gelato</h2>
           <h3>Made In House</h3>
           <p className="confined-text">
@@ -82,15 +116,15 @@ export default function Home() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
           </p>
         </div>
-        <div className="image">
-          <img src="/images/gelato.jpg" alt="Gelato" />
+        <div className="image" ref={gelatoImageRef}>
+          <img src="/images/gelato.JPG" alt="Gelato" />
         </div>
       </section>
       <section className="pastries">
-        <div className="image">
-          <img src="/images/pastries.jpg" alt="Pastries" />
+        <div className="image" ref={pastriesImageRef}>
+          <img src="/images/crepes.JPG" alt="Pastries" />
         </div>
-        <div className="text">
+        <div className="text" ref={pastriesTextRef}>
           <h2>Pastries</h2>
           <h3>Freshly Baked on the Daily</h3>
           <p className="confined-text">
@@ -113,12 +147,27 @@ export default function Home() {
           {showOverlay && <div className="map-overlay">Ctrl + Scroll to zoom in and out</div>}
         </div>
       </section>
-      <section className="contact">
+      <section className="footer">
         <div className="contact-content">
           <div className="contact-info">
             <h2>Contact Us</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+          <div className="hours-info">
+            <h2>Hours</h2>
+            <div className="hours-day">
+              <p><b>Tuesday - Friday</b></p>
+              <p>9:00am - 7:00pm</p>
+            </div>
+            <div className="hours-day">
+              <p><b>Saturday & Sunday</b></p>
+              <p>9:00am - 8:30pm</p>
+            </div>
+            <div className="hours-day">
+              <p><b>Monday</b></p>
+              <p>Closed</p>
+            </div>
           </div>
           <div className="location-info">
             <h2>Location</h2>

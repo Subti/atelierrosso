@@ -1,12 +1,11 @@
 @import 'variables';
 
-// Ensure no extra padding or margin on parent containers
 #root,
 .home {
   margin: 0;
   padding: 0;
   width: 100%;
-  box-sizing: border-box; // Include padding and border in the element's total width and height
+  box-sizing: border-box;
 }
 
 .home {
@@ -19,11 +18,11 @@
   color: $hero-text-color;
   padding: $hero-padding;
   width: 100%;
-  box-sizing: border-box; // Include padding and border in the element's total width and height
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; // Adjust height as needed
+  height: 100vh;
 }
 
 .hero-content {
@@ -32,19 +31,19 @@
   align-items: center;
   flex-direction: column;
   padding: 20px;
-  box-sizing: border-box; // Include padding and border in the element's total width and height
+  box-sizing: border-box;
 }
 
 .about {
   background-color: $about-bg-color;
   padding: $section-padding;
   width: 100%;
-  box-sizing: border-box; // Include padding and border in the element's total width and height
+  box-sizing: border-box;
 
   .about-content {
     width: 50%;
     margin: 0 auto;
-    box-sizing: border-box; // Include padding and border in the element's total width and height
+    box-sizing: border-box;
   }
 }
 
@@ -54,7 +53,31 @@
   align-items: center;
   padding: $section-padding;
   width: 100%;
-  box-sizing: border-box; // Include padding and border in the element's total width and height
+  box-sizing: border-box;
+  padding: 0;
+  max-height: 35vh;
+  overflow: hidden;
+}
+
+.gelato .text,
+.pastries .text,
+.gelato .image,
+.pastries .image {
+  flex: 1 1 50%;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateX(0);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.gelato .image img,
+.pastries .image img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
 }
 
 .gelato {
@@ -66,43 +89,35 @@
 }
 
 .text {
-  flex: 1;
   padding: 20px;
-  box-sizing: border-box; // Include padding and border in the element's total width and height
+  color: $confined-text-color;
+  box-sizing: border-box;
 
   h2 {
-    margin-bottom: 10px; // Adjust this value as needed
+    margin-bottom: 10px;
   }
 
   h3 {
-    margin-top: 0; // Remove top margin
-    margin-bottom: 20px; // Adjust this value as needed
+    margin-top: 0;
+    margin-bottom: 20px;
   }
 
   .confined-text {
     width: 70%;
-    margin: 0 auto; // Center the text
+    margin: 0 auto;
   }
 }
 
 .image {
-  flex: 1;
-  padding: 20px;
-  box-sizing: border-box; // Include padding and border in the element's total width and height
+  box-sizing: border-box;
 }
 
-.image img {
-  width: 100%;
-  height: auto;
-  border-radius: $image-border-radius;
-}
-
-.contact {
+.footer {
   background-color: $contact-bg-color;
   color: $contact-text-color;
   padding: $section-padding;
   width: 100%;
-  box-sizing: border-box; // Include padding and border in the element's total width and height
+  box-sizing: border-box;
 
   .contact-content {
     display: flex;
@@ -114,12 +129,27 @@
   .location-info {
     flex: 1;
     padding: 20px;
-    box-sizing: border-box; // Include padding and border in the element's total width and height
+    box-sizing: border-box;
   }
 }
 
-.contact p {
+.footer p {
   margin: 5px 0;
+}
+
+.hours-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.hours-day {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.hours-day p {
+  margin: 0;
 }
 
 .map-container {
@@ -150,10 +180,50 @@
   .image,
   .text {
     padding: 10px;
-    box-sizing: border-box; // Include padding and border in the element's total width and height
+    box-sizing: border-box;
   }
 
   .contact-content {
     flex-direction: column;
   }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.gelato .image.animate {
+  animation: slideInFromRight 1s ease-out forwards;
+}
+
+.pastries .image.animate {
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+
+.gelato .text.animate {
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+
+.pastries .text.animate {
+  animation: slideInFromRight 1s ease-out forwards;
 }
