@@ -140,6 +140,8 @@
 .hours-info {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .hours-day {
@@ -152,39 +154,126 @@
   margin: 0;
 }
 
-.map-container {
-  position: relative;
+.map-catering {
+  display: flex;
+  align-items: center;
+  padding: $section-padding;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  max-height: 50vh;
+  overflow: hidden;
+
+  .catering,
+  .map-container {
+    flex: 1 1 50%;
+    box-sizing: border-box;
+  }
+
+  .map-container {
+    position: relative;
+  }
+
+  .map-overlay {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 1000;
+  }
 }
 
-.map-overlay {
-  position: absolute;
-  top: 90%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  pointer-events: none;
-  z-index: 1000;
-}
-
-@media (max-width: 768px) {
+@media (max-width: 425px) {
 
   .gelato,
   .pastries {
     flex-direction: column;
+    height: auto;
+    max-height: 100vh;
+  }
+
+  .gelato .text,
+  .pastries .text,
+  .gelato .image,
+  .pastries .image {
+    order: initial;
+    height: auto;
+    width: 100%;
+  }
+
+  .gelato .text {
+    order: 1;
+    padding-bottom: 5%;
+  }
+
+  .gelato .image {
+    order: 2;
+  }
+
+  .pastries .text {
+    order: 1;
+    padding-bottom: 5%;
+  }
+
+  .pastries .image {
+    order: 2;
   }
 
   .image,
   .text {
-    padding: 10px;
+    padding: 0;
     box-sizing: border-box;
+  }
+
+  .gelato .image img,
+  .pastries .image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .map-catering {
+    flex-direction: column;
+    height: auto;
+    max-height: 100vh;
+  }
+
+  .map-catering .catering,
+  .map-catering .map-container {
+    order: initial;
+    height: auto;
+    width: 100%;
+  }
+
+  .map-catering .catering {
+    order: 1;
+    padding-bottom: 5%;
+  }
+
+  .map-catering .map-container {
+    order: 2;
   }
 
   .contact-content {
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-info,
+  .location-info {
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .hours-info {
+    width: 100%;
+    padding: 0;
   }
 }
 

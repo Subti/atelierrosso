@@ -133,9 +133,19 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <section className="map" id="map-section">
+      <section className="map-catering">
+        <div className="catering">
+          <h2>Catering Inquiries</h2>
+          <p>
+            For catering inquiries, please contact us at:
+            <br />
+            <b>Email:</b> catering@example.com
+            <br />
+            <b>Phone:</b> (123) 456-7890
+          </p>
+        </div>
         <div className="map-container">
-          <MapContainer center={position} zoom={13} style={{ height: "400px", width: "100%" }}>
+          <MapContainer center={position} zoom={13} style={{ height: "50vh", width: "100%" }}>
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
