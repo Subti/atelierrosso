@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { Carousel } from "react-responsive-carousel";
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "../css/Home.css";
@@ -58,6 +60,7 @@ export default function Home() {
   const pastriesTextRef = useRef(null);
   const gelatoImageRef = useRef(null);
   const pastriesImageRef = useRef(null);
+  
 
   useEffect(() => {
     const observerOptions = {
@@ -96,7 +99,17 @@ export default function Home() {
     <div className="home">
       <section className="hero">
         <div className="hero-content">
-          <h1>Insert image? Or whatever else</h1>
+          <Carousel showArrows={true} showThumbs={false} showStatus={false} autoPlay infiniteLoop>
+            <div>
+              <img src="/images/flatcroissant.jpeg" alt="Flat Croissant" />
+            </div>
+            <div>
+              <img src="/images/cake1.jpeg" alt="Cake" />
+            </div>
+            <div>
+              <img src="/images/tiramisugelato.jpeg" alt="Tiramisu Gelato" />
+            </div>
+          </Carousel>
         </div>
       </section>
       <section className="about">

@@ -8,6 +8,19 @@
   box-sizing: border-box;
 }
 
+img {
+  user-select: none;
+  /* Prevent text selection */
+  -webkit-user-drag: none;
+  /* Prevent dragging on WebKit browsers */
+  -moz-user-select: none;
+  /* Prevent text selection on Firefox */
+  -ms-user-select: none;
+  /* Prevent text selection on Internet Explorer/Edge */
+  pointer-events: none;
+  /* Disable pointer events */
+}
+
 .home {
   font-family: $font-family;
   text-align: center;
@@ -16,22 +29,35 @@
 .hero {
   background-color: $hero-bg-color;
   color: $hero-text-color;
-  padding: $hero-padding;
+  padding: 0;
   width: 100%;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
 }
 
 .hero-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 20px;
-  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hero-content img {
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-root,
+.carousel,
+.carousel-slider {
+  width: 100%;
+  height: 100%;
 }
 
 .about {
@@ -190,6 +216,28 @@
 }
 
 @media (max-width: 425px) {
+
+  .hero-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .hero-content img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+    display: block;
+  }
+
+  .carousel-root,
+  .carousel,
+  .carousel-slider {
+    width: 100%;
+    height: 100%;
+  }
 
   .gelato,
   .pastries {
