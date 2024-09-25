@@ -10,15 +10,10 @@
 
 img {
   user-select: none;
-  /* Prevent text selection */
   -webkit-user-drag: none;
-  /* Prevent dragging on WebKit browsers */
   -moz-user-select: none;
-  /* Prevent text selection on Firefox */
   -ms-user-select: none;
-  /* Prevent text selection on Internet Explorer/Edge */
   pointer-events: none;
-  /* Disable pointer events */
 }
 
 .home {
@@ -39,18 +34,38 @@ img {
 }
 
 .hero-content {
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
-.hero-content img {
+.hero .text {
+  flex: 1;
+  padding-right: 20px;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero .image {
+  flex: 1;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero .image img {
   width: 100%;
   height: 100%;
-  object-position: center;
   object-fit: cover;
-  display: block;
+  border-radius: 10px;
 }
 
 .carousel-root,
@@ -216,20 +231,33 @@ img {
 }
 
 @media (max-width: 425px) {
-
   .hero-content {
     position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
+    flex-direction: column;
   }
 
-  .hero-content img {
+  .hero .text,
+  .hero .image {
+    width: 100%;
+    padding: 0;
+  }
+
+  .hero .image {
+    order: 1;
+  }
+
+  .hero .text {
+    order: 2;
+    padding-bottom: 5%;
+  }
+
+  .hero .image img {
     width: 100%;
     height: 100%;
-    object-position: center;
     object-fit: cover;
-    display: block;
   }
 
   .carousel-root,

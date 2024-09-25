@@ -99,17 +99,13 @@ export default function Home() {
     <div className="home">
       <section className="hero">
         <div className="hero-content">
-          <Carousel showArrows={true} showThumbs={false} showStatus={false} autoPlay infiniteLoop>
-            <div>
-              <img src="/images/flatcroissant.jpeg" alt="Flat Croissant" />
-            </div>
-            <div>
-              <img src="/images/cake1.jpeg" alt="Cake" />
-            </div>
-            <div>
-              <img src="/images/tiramisugelato.jpeg" alt="Tiramisu Gelato" />
-            </div>
-          </Carousel>
+          <div className="text">
+            <h1>Welcome to Our Shop</h1>
+            <p>Discover the best pastries and gelato in town.</p>
+          </div>
+          <div className="image">
+            <img src="/images/flatcroissant.jpeg" alt="Hero" />
+          </div>
         </div>
       </section>
       <section className="about">
@@ -181,11 +177,11 @@ export default function Home() {
             <h2>Hours</h2>
             <div className="hours-day">
               <p><b>Tuesday - Friday</b></p>
-              <p>9:00am - 7:00pm</p>
+              <p>9:00 am - 7:00 pm</p>
             </div>
             <div className="hours-day">
               <p><b>Saturday & Sunday</b></p>
-              <p>9:00am - 8:30pm</p>
+              <p>9:00 am - 8:30 pm</p>
             </div>
             <div className="hours-day">
               <p><b>Monday</b></p>
@@ -194,7 +190,7 @@ export default function Home() {
           </div>
           <div className="location-info">
             <h2>Location</h2>
-            <p>110 Bearbrook Rd #2B</p>
+            <p>110 Bearbrook Rd #2B</p> 
             <p>Ottawa, ON K1B 5R2</p>
           </div>
         </div>
