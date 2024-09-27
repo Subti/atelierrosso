@@ -60,7 +60,7 @@ export default function Home() {
   const pastriesTextRef = useRef(null);
   const gelatoImageRef = useRef(null);
   const pastriesImageRef = useRef(null);
-  
+
 
   useEffect(() => {
     const observerOptions = {
@@ -100,8 +100,9 @@ export default function Home() {
       <section className="hero">
         <div className="hero-content">
           <div className="text">
-            <h1>Welcome to Our Shop</h1>
-            <p>Discover the best pastries and gelato in town.</p>
+            <h1>Delight in Every Bite!</h1>
+            <p>Experience the ultimate indulgence with our flat croissants! Crispy, sweet, and utterly irresistible, each bite promises a symphony of flavors. Visit our shop and treat yourself to a crunch like no other!</p>
+            <button onClick={handleMarkerClick} className="hero-button">Get That Crunch</button>
           </div>
           <div className="image">
             <img src="/images/flatcroissant.jpeg" alt="Hero" />
@@ -110,7 +111,7 @@ export default function Home() {
       </section>
       <section className="about">
         <div className="about-content">
-          <h2>About Us</h2>
+          <h2>About Us (Placeholder - WIP)</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
           </p>
@@ -121,8 +122,7 @@ export default function Home() {
           <h2>Gelato</h2>
           <h3>Made In House</h3>
           <p className="confined-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+            Indulge in our exquisite gelato, crafted in-house with the finest ingredients. We offer a variety of flavors with set classics and new flavors rotating in and out, ensuring there's always something to delight your taste buds and curiosity.
           </p>
         </div>
         <div className="image" ref={gelatoImageRef}>
@@ -137,21 +137,31 @@ export default function Home() {
           <h2>Pastries</h2>
           <h3>Freshly Baked on the Daily</h3>
           <p className="confined-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+            Our pastries are freshly baked every day, offering a perfect blend of crispiness and sweetness. We also serve savory pastries with new pastries introduced regularly, there's always a fresh treat waiting for you.
           </p>
         </div>
       </section>
       <section className="map-catering">
         <div className="catering">
-          <h2>Catering Inquiries</h2>
+          <h2>Cake Requests (WIP)</h2>
           <p>
-            For catering inquiries, please contact us at:
+            To request a custom gelato cake please use the form or contact us at:
             <br />
-            <b>Email:</b> catering@example.com
+            <b>Email:</b> --
             <br />
-            <b>Phone:</b> (123) 456-7890
+            <b>Phone:</b> (613) 824-8184
           </p>
+          <form
+            action="mailto:jpsaliba@outlook.com"
+            method="get"
+            encType="text/plain"
+          >
+            <div>
+              <label htmlFor="message">Message:</label>
+              <textarea id="message" name="body" rows="8" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+          </form>
         </div>
         <div className="map-container">
           <MapContainer center={position} zoom={13} style={{ height: "50vh", width: "100%" }}>
@@ -176,11 +186,11 @@ export default function Home() {
           <div className="hours-info">
             <h2>Hours</h2>
             <div className="hours-day">
-              <p><b>Tuesday - Friday</b></p>
+              <p><b>Tuesday - Thursday</b></p>
               <p>9:00 am - 7:00 pm</p>
             </div>
             <div className="hours-day">
-              <p><b>Saturday & Sunday</b></p>
+              <p><b>Friday - Sunday</b></p>
               <p>9:00 am - 8:30 pm</p>
             </div>
             <div className="hours-day">
@@ -190,7 +200,7 @@ export default function Home() {
           </div>
           <div className="location-info">
             <h2>Location</h2>
-            <p>110 Bearbrook Rd #2B</p> 
+            <p>110 Bearbrook Rd #2B</p>
             <p>Ottawa, ON K1B 5R2</p>
           </div>
         </div>
