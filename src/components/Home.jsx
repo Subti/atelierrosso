@@ -101,19 +101,19 @@ export default function Home() {
         <div className="hero-content">
           <div className="text">
             <h1>Delight in Every Bite!</h1>
-            <p>Experience the ultimate indulgence with our flat croissants! Crispy, sweet, and utterly irresistible, each bite promises a symphony of flavors. Visit our shop and treat yourself to a crunch like no other!</p>
+            <p>Experience the ultimate indulgence with our Yule log cakes! Rich, festive, and utterly irresistible, each bite promises a symphony of flavors. Visit our shop and treat yourself to a holiday treat like no other! Also available in white cake.</p>
             <button onClick={handleMarkerClick} className="hero-button">Get That Crunch</button>
           </div>
           <div className="image">
-            <img src="/images/flatcroissant.jpeg" alt="Hero" />
+            <img src="/images/IMG_2711.jpg" alt="" />
           </div>
         </div>
       </section>
       <section className="about">
         <div className="about-content">
-          <h2>About Us (Placeholder - WIP)</h2>
+          <h2>About Us</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+            We are a family-run desserterie dedicated to bringing you the finest sweet treats. All our pastries are freshly baked daily, and we craft our own gelato in-house. Come and experience the love and passion we put into every bite!
           </p>
         </div>
       </section>
@@ -141,18 +141,25 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <section className="map-catering">
-        <div className="catering">
-          <h2>Cake Requests (WIP)</h2>
+      <section className="map-catering" id="cake">
+        <div className="catering text">
+          <h2>Cake Requests</h2>
           <p>
-            To request a custom gelato cake please use the form or contact us at:
+            To request a custom <b>gelato cake OR yule log cake</b> please use the form or contact us at:
             <br />
-            <b>Email:</b> --
-            <br />
-            <b>Phone:</b> (613) 824-8184
+            <table className="center-table">
+              <tr>
+                <td><b>Email:</b></td>
+                <td><a className="no-underline text" href="mailto:atelierrosso1@gmail.com">atelierrosso1@gmail.com</a></td>
+              </tr>
+              <tr>
+                <td><b>Phone:</b></td>
+                <td><a className="no-underline text" href="tel:+16138248184">(613) 824-8184</a></td>
+              </tr>
+            </table>
           </p>
           <form
-            action="mailto:jpsaliba@outlook.com"
+            action="mailto:atelierrosso1@gmail.com"
             method="get"
             encType="text/plain"
           >
@@ -163,7 +170,7 @@ export default function Home() {
             <button type="submit">Send Message</button>
           </form>
         </div>
-        <div className="map-container">
+        <div className="map-container" id="map-section">
           <MapContainer center={position} zoom={13} style={{ height: "50vh", width: "100%" }}>
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -177,11 +184,17 @@ export default function Home() {
         </div>
       </section>
       <section className="footer">
-        <div className="contact-content">
+        <div className="contact-content" id="contact">
           <div className="contact-info">
             <h2>Contact Us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <table className="center-table">
+              <tr>
+                <td><b>Email:</b> atelierrosso1@gmail.com</td>
+              </tr>
+              <tr>
+                <td><b>Phone:</b> (613) 824-8184</td>
+              </tr>
+            </table>
           </div>
           <div className="hours-info">
             <h2>Hours</h2>

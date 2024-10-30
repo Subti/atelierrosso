@@ -16,6 +16,14 @@ img {
   pointer-events: none;
 }
 
+.no-underline {
+  text-decoration: none;
+}
+
+.center-table {
+  margin: 0 auto;
+}
+
 .home {
   font-family: $font-family;
   text-align: center;
@@ -68,7 +76,6 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
 }
 
 .hero .hero-button {
@@ -105,6 +112,7 @@ img {
     width: 50%;
     margin: 0 auto;
     box-sizing: border-box;
+    color: $hero-text-color;
   }
 }
 
@@ -151,7 +159,7 @@ img {
 
 .text {
   padding: 20px;
-  color: $confined-text-color;
+  color: $hero-text-color;
   box-sizing: border-box;
 
   h2 {

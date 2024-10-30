@@ -9,11 +9,11 @@ export default function Navbar() {
     setIsOpen(!isOpen);
   };
 
-  const handleScrollToMap = (event) => {
+  const handleScrollToSection = (event, sectionId) => {
     event.preventDefault();
-    const mapSection = document.getElementById("map-section");
-    if (mapSection) {
-      mapSection.scrollIntoView({ behavior: "smooth" });
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -42,22 +42,22 @@ export default function Navbar() {
       </button>
       <ul className={`navbar-nav ${isOpen ? "open" : ""}`}>
         <li className="nav-item">
-          <a href="/menu" className="nav-link">
+          <a href="#menu" className="nav-link" onClick={(e) => handleScrollToSection(e, "menu")}>
             Menu
           </a>
         </li>
         <li className="nav-item">
-          <a href="/contact" className="nav-link">
+          <a href="#contact" className="nav-link" onClick={(e) => handleScrollToSection(e, "contact")}>
             Contact
           </a>
         </li>
         <li className="nav-item">
-          <a href="/cake" className="nav-link">
+          <a href="#cake" className="nav-link" onClick={(e) => handleScrollToSection(e, "cake")}>
             Order
           </a>
         </li>
         <li className="nav-item">
-          <a href="#map-section" className="nav-link" onClick={handleScrollToMap}>
+          <a href="#map-section" className="nav-link" onClick={(e) => handleScrollToSection(e, "map-section")}>
             Location
           </a>
         </li>
