@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../css/Navbar.css";
+import { handleScrollToSection, handleScroll } from "../utils/helpers";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,26 +10,11 @@ export default function Navbar() {
     setIsOpen(!isOpen);
   };
 
-  const handleScrollToSection = (event, sectionId) => {
-    event.preventDefault();
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsShrunk(true);
-      } else {
-        setIsShrunk(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
+    const onScroll = () => handleScroll(setIsShrunk);
+    window.addEventListener("scroll", onScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
 

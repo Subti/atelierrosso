@@ -5,6 +5,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "../css/Home.css";
+import { handleScrollToSection } from "../utils/helpers";
 
 // Fix for default marker icon issue with Webpack
 delete L.Icon.Default.prototype._getIconUrl;
@@ -61,6 +62,10 @@ export default function Home() {
   const gelatoImageRef = useRef(null);
   const pastriesImageRef = useRef(null);
 
+  const handleScrollToOrder = (e) => {
+    e.preventDefault();
+    document.getElementById("cake").scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     const observerOptions = {
@@ -102,45 +107,56 @@ export default function Home() {
           <div className="text">
             <h1>Delight in Every Bite!</h1>
             <p>Experience the ultimate indulgence with our Yule log cakes! Rich, festive, and utterly irresistible, each bite promises a symphony of flavors. Visit our shop and treat yourself to a holiday treat like no other! Also available in white cake.</p>
-            <button onClick={handleMarkerClick} className="hero-button">Get That Crunch</button>
+            <div className="button-container">
+              <button onClick={handleMarkerClick} className="hero-button">Visit Us Now!</button>
+              <button onClick={handleScrollToOrder} className="hero-button cake-button">Order a Cake</button>
+            </div>
           </div>
           <div className="image">
             <img src="/images/IMG_2711.jpg" alt="" />
           </div>
         </div>
       </section>
+
+
       <section className="about">
-        <div className="about-content">
+        <div className="text">
           <h2>About Us</h2>
-          <p>
+          <p className="confined-text">
             We are a family-run desserterie dedicated to bringing you the finest sweet treats. All our pastries are freshly baked daily, and we craft our own gelato in-house. Come and experience the love and passion we put into every bite!
           </p>
         </div>
       </section>
-      <section className="gelato">
-        <div className="text" ref={gelatoTextRef}>
-          <h2>Gelato</h2>
-          <h3>Made In House</h3>
-          <p className="confined-text">
-            Indulge in our exquisite gelato, crafted in-house with the finest ingredients. We offer a variety of flavors with set classics and new flavors rotating in and out, ensuring there's always something to delight your taste buds and curiosity.
-          </p>
+
+
+      <section className="gelato-pastries">
+        <div className="item">
+          <div className="image">
+            <img src="/images/gelato.JPG" alt="Gelato" className="circle-image" />
+          </div>
+          <div className="text">
+            <h2>Gelato</h2>
+            <h3>Made In House</h3>
+            <p className="confined-text">
+              Indulge in our exquisite gelato, crafted in-house with the finest ingredients. We offer a variety of flavors with set classics and new flavors rotating in and out, ensuring there's always something to delight your taste buds and curiosity.
+            </p>
+          </div>
         </div>
-        <div className="image" ref={gelatoImageRef}>
-          <img src="/images/gelato.JPG" alt="Gelato" />
+        <div className="item">
+          <div className="image">
+            <img src="/images/crepes.JPG" alt="Pastries" className="circle-image" />
+          </div>
+          <div className="text">
+            <h2>Pastries</h2>
+            <h3>Freshly Baked on the Daily</h3>
+            <p className="confined-text">
+              Our pastries are freshly baked every day, offering a perfect blend of crispiness and sweetness. We also serve savory pastries with new pastries introduced regularly, there's always a fresh treat waiting for you.
+            </p>
+          </div>
         </div>
       </section>
-      <section className="pastries">
-        <div className="image" ref={pastriesImageRef}>
-          <img src="/images/crepes.JPG" alt="Pastries" />
-        </div>
-        <div className="text" ref={pastriesTextRef}>
-          <h2>Pastries</h2>
-          <h3>Freshly Baked on the Daily</h3>
-          <p className="confined-text">
-            Our pastries are freshly baked every day, offering a perfect blend of crispiness and sweetness. We also serve savory pastries with new pastries introduced regularly, there's always a fresh treat waiting for you.
-          </p>
-        </div>
-      </section>
+
+
       <section className="map-catering" id="cake">
         <div className="catering text">
           <h2>Cake Requests</h2>
@@ -183,6 +199,8 @@ export default function Home() {
           {showOverlay && <div className="map-overlay">Ctrl + Scroll to zoom in and out</div>}
         </div>
       </section>
+
+
       <section className="footer">
         <div className="contact-content" id="contact">
           <div className="contact-info">

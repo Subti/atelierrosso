@@ -4,6 +4,7 @@
 .home {
   margin: 0;
   padding: 0;
+  background-color: #f4e8d1;
   width: 100%;
   box-sizing: border-box;
 }
@@ -22,6 +23,7 @@ img {
 
 .center-table {
   margin: 0 auto;
+  padding-top: 0.5rem;
 }
 
 .home {
@@ -95,6 +97,11 @@ img {
   }
 }
 
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
 .carousel-root,
 .carousel,
 .carousel-slider {
@@ -104,12 +111,12 @@ img {
 
 .about {
   background-color: $about-bg-color;
-  padding: $section-padding;
+  padding: 50px 0px;
   width: 100%;
   box-sizing: border-box;
 
-  .about-content {
-    width: 50%;
+  .text {
+    width: 80%;
     margin: 0 auto;
     box-sizing: border-box;
     color: $hero-text-color;
@@ -179,6 +186,35 @@ img {
 
 .image {
   box-sizing: border-box;
+}
+
+.gelato-pastries {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 2rem 0;
+  gap: 0rem;
+}
+
+.gelato-pastries .item {
+  text-align: center;
+  max-width: 35%;
+}
+
+.gelato-pastries .image {
+  margin-bottom: 1rem;
+}
+
+.circle-image {
+  width: 20rem; /* Increase the size of the images */
+  height: 20rem; /* Increase the size of the images */
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.confined-text {
+  margin: 0 auto;
+  max-width: 80%;
 }
 
 .footer {
@@ -324,6 +360,11 @@ img {
     max-width: 90%;
   }
 
+  .about .text {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .hero .hero-button {
     font-size: 1rem;
     padding: 10px 20px;
@@ -349,11 +390,17 @@ img {
     object-fit: cover;
   }
 
-  .carousel-root,
-  .carousel,
-  .carousel-slider {
-    width: 100%;
-    height: 100%;
+  .gelato-pastries {
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  .gelato-pastries .item {
+    max-width: 100%;
+  }
+
+  .text .confined-text {
+    width: 90%;
   }
 
   .gelato,
@@ -422,6 +469,11 @@ img {
 
   .map-catering .map-container {
     order: 2;
+  }
+
+  .catering.text {
+    max-width: 95%;
+    margin: 0 auto;
   }
 
   .contact-content {
