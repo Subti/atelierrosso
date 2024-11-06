@@ -157,37 +157,12 @@ export default function Home() {
       </section>
 
 
-      <section className="map-catering" id="cake">
-        <div className="catering text">
-          <h2>Cake Requests</h2>
-          <p>
-            To request a custom <b>gelato cake OR yule log cake</b> please use the form or contact us at:
-            <br />
-            <table className="center-table">
-              <tr>
-                <td><b>Email:</b></td>
-                <td><a className="no-underline text" href="mailto:atelierrosso1@gmail.com">atelierrosso1@gmail.com</a></td>
-              </tr>
-              <tr>
-                <td><b>Phone:</b></td>
-                <td><a className="no-underline text" href="tel:+16138248184">(613) 824-8184</a></td>
-              </tr>
-            </table>
-          </p>
-          <form
-            action="mailto:atelierrosso1@gmail.com"
-            method="get"
-            encType="text/plain"
-          >
-            <div>
-              <label htmlFor="message">Message:</label>
-              <textarea id="message" name="body" rows="8" required></textarea>
-            </div>
-            <button type="submit">Send Message</button>
-          </form>
+      <section className="location-section" id="location">
+        <div className="location-header">
+          <h1>Where to Find Us</h1>
         </div>
         <div className="map-container" id="map-section">
-          <MapContainer center={position} zoom={13} style={{ height: "50vh", width: "100%" }}>
+          <MapContainer center={position} zoom={13} className="map" style={{ height: "60vh", width: "100%" }}>
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -200,18 +175,56 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="cake-section" id="cake">
+        <div className="catering text">
+          <h2>Cake Requests</h2>
+          <p>
+            To request a custom <b>gelato cake OR yule log cake</b> please use the form or contact us at:
+          </p>
+          <table className="center-table">
+            <tbody>
+              <tr>
+                <td><b>Email:</b></td>
+                <td><a className="no-underline text" href="mailto:atelierrosso1@gmail.com">atelierrosso1@gmail.com</a></td>
+              </tr>
+              <tr>
+                <td><b>Phone:</b></td>
+                <td><a className="no-underline text" href="tel:+16138248184">(613) 824-8184</a></td>
+              </tr>
+            </tbody>
+          </table>
+          <p><b>Or fill this form:</b></p>
+          <form
+            action="mailto:atelierrosso1@gmail.com"
+            method="get"
+            encType="text/plain"
+          >
+            {/* <div className="form-group">
+              <label htmlFor="email">Your Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div> */}
+            <div className="form-group">
+              <label htmlFor="message">Message:</label>
+              <textarea id="message" name="body" rows="8" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </section>
 
       <section className="footer">
         <div className="contact-content" id="contact">
           <div className="contact-info">
             <h2>Contact Us</h2>
             <table className="center-table">
-              <tr>
-                <td><b>Email:</b> atelierrosso1@gmail.com</td>
-              </tr>
-              <tr>
-                <td><b>Phone:</b> (613) 824-8184</td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td><b>Email:</b> atelierrosso1@gmail.com</td>
+                </tr>
+                <tr>
+                  <td><b>Phone:</b> (613) 824-8184</td>
+                </tr>
+              </tbody>
             </table>
           </div>
           <div className="hours-info">
