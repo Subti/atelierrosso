@@ -2,19 +2,9 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/node",
-      "config": {
-        "zeroConfig": true
-      }
+      "use": "@vercel/node"
     }
   ],
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "preview": {
-    "buildCommand": "npm run build",
-    "outputDirectory": "dist"
-  }
+  "outputDirectory": "dist"
 }
