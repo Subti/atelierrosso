@@ -73,18 +73,31 @@
   text-shadow: $nav-link-hover-shadow;
 }
 
-/* Media query for small devices */
 @media (max-width: 425px) {
   .navbar-toggler {
     display: block;
+    position: absolute;
+    right: 1rem; /* Keep the toggler on the left */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .hamburger-icon,
+  .close-icon {
+    font-size: 1.5rem;
+    color: $navbar-text-color;
+    transition: transform 0.3s ease;
+  }
+
+  .hamburger-icon:hover,
+  .close-icon:hover {
+    transform: scale(1.2);
   }
 
   .navbar {
     height: $navbar-small-height;
     position: sticky;
-    /* Ensure sticky positioning is applied */
     top: 0;
-    /* Ensure it stays at the top */
   }
 
   .navbar.shrink {
@@ -92,7 +105,13 @@
   }
 
   .navbar-brand {
-    margin-left: 0;
+    position: absolute; /* Force absolute positioning */
+    margin: 0;
+    left: 50%; /* Center horizontally */
+    top: 50%; /* Center vertically */
+    transform: translate(-50%, -50%); /* Adjust for centering */
+    text-align: center;
+    width: auto;
   }
 
   .navbar-nav {

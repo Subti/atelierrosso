@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../css/Navbar.css";
 import { handleScrollToSection, handleScroll } from "../utils/helpers";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isShrunk, setIsShrunk] = useState(false);
+  const navbarRef = useRef(null);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -18,13 +21,30 @@ export default function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <nav className={`navbar ${isShrunk ? "shrink" : ""}`}>
+    <nav className={`navbar ${isShrunk ? "shrink" : ""}`} ref={navbarRef}>
       <a href="/" className="navbar-brand">
         <img src="/images/Atelier_Rosso_SignBoard-cropped.svg" alt="Brand Logo" />
       </a>
       <button className="navbar-toggler" onClick={toggleMenu}>
-        <span className="hamburger-icon">&#9776;</span>
+        {isOpen ? (
+          <FontAwesomeIcon icon={faTimesCircle} className="close-icon" />
+        ) : (
+          <FontAwesomeIcon icon={faBars} className="hamburger-icon" />
+        )}
       </button>
       <ul className={`navbar-nav ${isOpen ? "open" : ""}`}>
         <li className="nav-item">
