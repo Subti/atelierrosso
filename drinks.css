@@ -1,0 +1,192 @@
+body {
+  font-family: "Dancing Script", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #d2b48c;
+}
+
+.menu {
+  background-color: #ffdb98;
+  margin-top: 10px;
+  padding: 2in;
+  /* 0.5in * 4 */
+  box-sizing: border-box;
+  border-radius: 32px;
+  /* 8px * 4 */
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+  /* 4px * 4, 8px * 4 */
+  text-align: left;
+  opacity: 1;
+  max-width: 24in;
+  /* 6in * 4 */
+  z-index: 1;
+  width: 100%;
+  border: 4px solid #8b4513;
+  /* 1px * 4 */
+  background-image: url("./nice-snow.png");
+  background-size: cover;
+  page-break-inside: avoid;
+}
+
+.image-container {
+  position: absolute;
+  width: 40%;
+  height: auto;
+  top: 20%;
+  left: 30%;
+  z-index: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-image {
+  width: 50%;
+  height: auto;
+  opacity: 0.2;
+}
+
+.menu h1 {
+  margin-bottom: 80px;
+  /* 20px * 4 */
+  font-size: 144px;
+  /* 36px * 4 */
+  color: #8b4513;
+  text-align: center;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu li {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 0;
+  /* 10px * 4 */
+  font-size: 96px;
+  /* 24px * 4 */
+  color: #4b3832;
+  padding: 20px 0;
+  /* 5px * 4 */
+}
+
+.menu li .item {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu li .item span {
+  flex: 1;
+  text-align: center;
+}
+
+.menu li .item span:first-child {
+  text-align: left;
+}
+
+.menu li .item span:last-child {
+  text-align: right;
+}
+
+.menu li .price {
+  flex: 0;
+  margin-left: 80px;
+  /* 20px * 4 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.menu li:last-child {
+  border-bottom: none;
+}
+
+.buttons {
+  margin-top: 80px;
+  /* 20px * 4 */
+}
+
+.menu-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 80px 0;
+  /* 20px * 4 */
+}
+
+.menu-title .line {
+  flex: 1;
+  border-bottom: 8px solid #8b4513;
+  /* 2px * 4 */
+  margin: 0 40px;
+  /* 10px * 4 */
+}
+
+.buttons button {
+  margin: 20px;
+  /* 5px * 4 */
+  padding: 40px 80px;
+  /* 10px 20px * 4 */
+  font-size: 64px;
+  /* 16px * 4 */
+  cursor: pointer;
+  background-color: #f0e68c;
+  border: 4px solid #8b4513;
+  /* 1px * 4 */
+  border-radius: 16px;
+  /* 4px * 4 */
+}
+
+.buttons button.selected {
+  background-color: #8b4513;
+  color: white;
+}
+
+.buttons button#boldButton.bold {
+  background-color: #4b3832;
+  color: white;
+}
+
+.crepe-cocktail {
+  margin-top: 50px;
+  /* Increase margin to make it more distinct */
+  padding: 20px;
+  /* Increase padding for better spacing */
+  border-radius: 5px;
+  text-align: center;
+  /* Align the table to the right */
+}
+
+.crepe-cocktail .item {
+  margin-top: 60px;
+  margin-left: 60px;
+}
+
+.price-table {
+  width: 100%;
+  margin-left: 100px;
+  border-collapse: collapse;
+  /* Ensures there is no space between table cells */
+  margin-top: 50px;
+  text-align: center;
+  /* Center text in the table */
+  table-layout: fixed;
+  /* Ensures fixed layout for the table */
+}
+
+.price-table td {
+  padding: 5px;
+  /* Reduce padding for less space between cells */
+}
+
+.price-table .size {
+  font-weight: bold;
+}
