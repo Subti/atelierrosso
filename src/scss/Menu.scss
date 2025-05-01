@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
 .menu-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  font-family: 'Indie Flower', cursive;
 }
 
 .menu-container {
@@ -40,11 +43,14 @@
 }
 
 .menu-section .item {
+  color: #6c3b07;
   font-weight: bold;
+  font-size: 2rem;
 }
 
 .menu-section .price {
-  color: #4b3832;
+  color: #6c3b07;
+  font-size: 2rem;
 }
 
 @media (max-width: 768px) {
