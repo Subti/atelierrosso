@@ -1,0 +1,112 @@
+@import 'variables';
+
+.order-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; // Center the box horizontally
+  max-width: 600px;
+  margin: 50px auto; // Add some vertical margin for spacing
+  padding: 50px 20px;
+  text-align: center;
+  background-color: $about-bg-color;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.order-page h1 {
+  font-family: 'Coiny', 'Open Sans', sans-serif;
+  font-size: 2rem;
+  color: $hero-text-color;
+  margin-bottom: 20px;
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: $hero-text-color;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px 0px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: $hero-text-color;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:focus {
+    border-color: $button1-bg-color;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    outline: none;
+  }
+}
+
+textarea {
+  resize: none;
+}
+
+.order-button {
+  background-color: $button1-bg-color;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: $button1-hover-color;
+    transform: scale(1.05);
+  }
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -10px;
+}
+
+.date-picker-input,
+.time-picker-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: $hero-text-color;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:focus {
+    border-color: $button1-bg-color;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    outline: none;
+  }
+}
+
+.react-datepicker__time-container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
