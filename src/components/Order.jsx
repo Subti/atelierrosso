@@ -62,6 +62,7 @@ const Order = () => {
 
   return (
     <div className="order-page">
+      <h1>CURRENTLY NOT ACCEPTING ORDERS (PAYMENT SYSTEM UNDER DEVELOPMENT)</h1>
       <h1>Order Your Cake</h1>
       <form onSubmit={handleSubmit} className="order-form">
         <div className="form-group">
