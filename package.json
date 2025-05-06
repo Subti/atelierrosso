@@ -29,7 +29,8 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^7.5.3",
     "react-swipeable": "^7.0.1",
-    "sass": "^1.77.8"
+    "sass": "^1.77.8",
+    "stripe": "^18.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
