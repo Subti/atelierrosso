@@ -68,9 +68,9 @@ export default function Navbar() {
               </a>
             </li>
             <li className="nav-item">
-              <a href="#cake" className="nav-link" onClick={(e) => handleScrollToSection(e, "cake")}>
+              <Link to="/order" className="nav-link">
                 Order
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a href="#map-section" className="nav-link" onClick={(e) => handleScrollToSection(e, "map-section")}>
