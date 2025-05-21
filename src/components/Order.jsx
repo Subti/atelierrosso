@@ -3,11 +3,25 @@ import "../css/Order.css";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+const REGULAR_CAKE_FLAVORS = [
+  "Vanilla Cake",
+  "Chocolate Cake",
+  "Tiramisu",
+];
+
+const GELATO_CAKE_FLAVORS = [
+  "Ferrero Rocher",
+  "Pistachio",
+  "Chocolate",
+];
+
+
 const Order = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phoneNumber: "",
+    cakeType: "Regular Cake",
     flavor: "",
     size: "Small",
     pickupDate: null,
@@ -19,7 +33,11 @@ const Order = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+      ...(name === "cakeType" ? { flavor: "" } : {}),
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -60,6 +78,25 @@ const Order = () => {
     }
   };
 
+  const flavorOptions =
+    formData.cakeType === "Regular Cake"
+      ? REGULAR_CAKE_FLAVORS
+      : GELATO_CAKE_FLAVORS;
+
+  const REGULAR_CAKE_PRICES = {
+    Small: 30,
+    Medium: 50,
+    Large: 70,
+  };
+
+  const GELATO_CAKE_PRICES = {
+    Small: 35,
+    Medium: 55,
+    Large: 75,
+  };
+
+  const PISTACHIO_SURCHARGE = 5;
+
   return (
     <div className="order-page">
       <h1>CURRENTLY NOT ACCEPTING ORDERS (PAYMENT SYSTEM UNDER DEVELOPMENT)</h1>
@@ -97,16 +134,61 @@ const Order = () => {
             required
           />
         </div>
+        <div className="form-group cake-type-group">
+          <label>Cake Type:</label>
+          <div className="cake-type-options">
+            <label className="cake-type-option">
+              <input
+                type="radio"
+                name="cakeType"
+                value="Regular Cake"
+                checked={formData.cakeType === "Regular Cake"}
+                onChange={handleChange}
+                style={{ display: "none" }}
+              />
+              <img
+                src="/images/regular-cake.png"
+                alt="Regular Cake"
+                className={formData.cakeType === "Regular Cake" ? "cake-img selected" : "cake-img"}
+              />
+              <div className="cake-type-label">Regular Cake</div>
+            </label>
+            <label className="cake-type-option">
+              <input
+                type="radio"
+                name="cakeType"
+                value="Gelato Cake"
+                checked={formData.cakeType === "Gelato Cake"}
+                onChange={handleChange}
+                style={{ display: "none" }}
+              />
+              <img
+                src="/images/gelato-cake.png"
+                alt="Gelato Cake"
+                className={formData.cakeType === "Gelato Cake" ? "cake-img selected" : "cake-img"}
+              />
+              <div className="cake-type-label">Gelato Cake</div>
+            </label>
+          </div>
+        </div>
         <div className="form-group">
           <label htmlFor="flavor">Cake Flavor:</label>
-          <input
-            type="text"
+          <select
             id="flavor"
             name="flavor"
             value={formData.flavor}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="" disabled>
+              Select a flavor
+            </option>
+            {flavorOptions.map((flavor) => (
+              <option key={flavor} value={flavor}>
+                {flavor}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="form-group">
           <label htmlFor="size">Cake Size:</label>
@@ -117,10 +199,25 @@ const Order = () => {
             onChange={handleChange}
             required
           >
-            <option value="Small">Small ($30)</option>
-            <option value="Medium">Medium ($50)</option>
-            <option value="Large">Large ($70)</option>
+            {Object.entries(
+              formData.cakeType === "Regular Cake"
+                ? REGULAR_CAKE_PRICES
+                : GELATO_CAKE_PRICES
+            ).map(([size, price]) => {
+              const isPistachio = formData.flavor === "Pistachio";
+              const displayPrice = isPistachio ? price + PISTACHIO_SURCHARGE : price;
+              return (
+                <option key={size} value={size}>
+                  {size} (${displayPrice}{isPistachio ? " - Pistachio" : ""})
+                </option>
+              );
+            })}
           </select>
+          {formData.flavor === "Pistachio" && (
+            <div style={{ color: "#b8860b", fontSize: "0.95em", marginTop: "0.3em" }}>
+              * Pistachio flavor adds ${PISTACHIO_SURCHARGE} to the price.
+            </div>
+          )}
         </div>
         <div className="form-group">
           <label htmlFor="pickupDate">Pickup Date:</label>

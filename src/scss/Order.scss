@@ -110,3 +110,38 @@ textarea {
   border-radius: 5px;
   background-color: #fff;
 }
+
+.cake-type-group {
+  margin-bottom: 1.5rem;
+  .cake-type-options {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .cake-type-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+  .cake-img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(0.9);
+    transition: filter 0.2s;
+    border-radius: 10px;
+    border: 2px solid transparent;
+  }
+  .cake-img.selected {
+    filter: none;
+    border: 2px solid $button1-bg-color;
+  }
+  .cake-type-label {
+    margin-top: 0.5rem;
+    font-weight: 500;
+    text-align: center;
+  }
+}
