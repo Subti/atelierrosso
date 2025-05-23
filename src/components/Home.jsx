@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { Carousel } from "react-responsive-carousel";
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -74,7 +75,9 @@ export default function Home() {
             <p>Experience the ultimate indulgence with our Yule log cakes! Rich, festive, and utterly irresistible, each bite promises a symphony of flavors. Visit our shop and treat yourself to a holiday treat like no other! Also available in white cake.</p>
             <div className="button-container">
               <button onClick={handleMarkerClick} className="hero-button">Visit Us Now!</button>
-              <button onClick={handleScrollToOrder} className="hero-button cake-button">Order a Cake</button>
+              <Link to="/order">
+                <button className="hero-button cake-button">Order a Cake</button>
+              </Link>
             </div>
           </div>
           <div className="image">

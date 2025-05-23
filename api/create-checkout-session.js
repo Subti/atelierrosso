@@ -34,14 +34,16 @@ export default async function handler(req, res) {
   }
 
   const REGULAR_CAKE_PRICES = {
-    Small: 3000,
-    Medium: 5000,
-    Large: 7000,
+    Small: 2500,
+    Medium: 3500,
+    Large: 4500,
+    ExtraLarge: 5500,
   };
   const GELATO_CAKE_PRICES = {
-    Small: 3500,
-    Medium: 5500,
-    Large: 7500,
+    Small: 3000,
+    Medium: 4000,
+    Large: 5000,
+    ExtraLarge: 6500,
   };
   const PISTACHIO_SURCHARGE = 500;
 

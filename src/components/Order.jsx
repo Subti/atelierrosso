@@ -4,8 +4,13 @@ import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const REGULAR_CAKE_FLAVORS = [
-  "Vanilla Cake",
-  "Chocolate Cake",
+  "Lemon",
+  "Caramel",
+  "Chocolate",
+  "Crème pâtissière",
+  "Pistachio",
+  "Vanilla",
+  "Hazelnut",
   "Tiramisu",
 ];
 
@@ -84,15 +89,17 @@ const Order = () => {
       : GELATO_CAKE_FLAVORS;
 
   const REGULAR_CAKE_PRICES = {
-    Small: 30,
-    Medium: 50,
-    Large: 70,
+    Small: 25,
+    Medium: 35,
+    Large: 45,
+    ExtraLarge: 55,
   };
 
   const GELATO_CAKE_PRICES = {
-    Small: 35,
-    Medium: 55,
-    Large: 75,
+    Small: 30,
+    Medium: 40,
+    Large: 50,
+    ExtraLarge: 65,
   };
 
   const PISTACHIO_SURCHARGE = 5;
