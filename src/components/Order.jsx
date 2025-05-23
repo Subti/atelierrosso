@@ -18,6 +18,8 @@ const GELATO_CAKE_FLAVORS = [
   "Ferrero Rocher",
   "Pistachio",
   "Chocolate",
+  "Cookies & Cream",
+  "Birthday Cake",
 ];
 
 
