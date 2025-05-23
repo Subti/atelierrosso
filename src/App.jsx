@@ -7,6 +7,7 @@ import Contact from './components/Contact';
 import OrderPage from './components/Order';
 import Success from './components/Success';
 import Cancel from './components/Cancel';
+import AdminOrders from './components/AdminOrders';
 import './css/fonts.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/order" element={<OrderPage />} />
           <Route path="/success" element={<Success />} />
           <Route path="/cancel" element={<Cancel />} />
+          <Route path="/admin/orders" element={<AdminOrders />} />
         </Routes>
       </Router>
     </>
