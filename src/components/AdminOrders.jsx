@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css/AdminOrders.scss";
+import "../css/AdminOrders.css";
 
 export default function AdminOrders() {
   const [password, setPassword] = useState("");
