@@ -1,3 +1,6 @@
+@import 'variables';
+@import 'fonts';
+
 .modal {
   position: fixed;
   top: 0;
@@ -9,10 +12,151 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  font-family: $font-family;
 }
+
 .modal-content {
   background: #fff;
-  padding: 2em;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 2em 2.5em;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  color: $hero-text-color;
+  font-family: $font-family;
+  text-align: center;
+  min-width: 280px;
+  max-width: 90vw;
+}
+
+.modal-content button {
+  background-color: $button1-bg-color;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 25px;
+  font-size: 1rem;
+  margin: 0 0.5em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: $font-family;
+}
+
+.modal-content button:hover {
+  background-color: $button1-hover-color;
+}
+
+// --- Table Styling ---
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  background: #fff;
+  font-family: $font-family;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 0.75em 1em;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+  color: $hero-text-color;
+}
+
+th {
+  background: $navbar-bg-color;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:nth-child(even) {
+  background: #faf7f3;
+}
+
+button {
+  background-color: $button1-bg-color;
+  color: #fff;
+  border: none;
+  padding: 6px 18px;
+  border-radius: 18px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: $font-family;
+}
+
+button:hover {
+  background-color: $button1-hover-color;
+}
+
+@media (max-width: 900px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+  thead {
+    display: none;
+  }
+  tr {
+    margin-bottom: 1.2em;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 0.5em 0;
+  }
+  td {
+    padding: 0.7em 1em;
+    border: none;
+    position: relative;
+  }
+  td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.3em;
+    color: $navbar-bg-color;
+  }
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.spinner {
+  border: 6px solid #eee;
+  border-top: 6px solid $navbar-bg-color;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

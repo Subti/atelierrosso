@@ -121,6 +121,7 @@ export default async function handler(req, res) {
           quantity: 1,
         },
       ],
+      customer_email: email,
       metadata: {
         orderId: orderId.toString(),
         fullName,
