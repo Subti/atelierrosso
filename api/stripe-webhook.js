@@ -16,21 +16,28 @@ export default async function handler(req, res) {
   }
 
   const sig = req.headers['stripe-signature'];
-  const buf = await buffer(req);
-
   let event;
+
   try {
+    const buf = await buffer(req);
+    console.log('Raw request body buffer:', buf.toString());
+    console.log('Stripe signature header:', sig);
+
     event = stripe.webhooks.constructEvent(
       buf,
       sig,
       process.env.STRIPE_WEBHOOK_SECRET
     );
+    console.log('Stripe event constructed successfully:', event.type);
   } catch (err) {
+    console.error('Webhook Error:', err.message);
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
+    console.log('Checkout session completed:', session);
+
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -43,12 +50,17 @@ export default async function handler(req, res) {
       .map(([key, value]) => `<b>${key}:</b> ${value}`)
       .join('<br>');
 
-    await transporter.sendMail({
-      from: `"Atelier Rosso" <${process.env.GMAIL_USER}>`,
-      to: 'atelierrosso1@gmail.com',
-      subject: 'New Cake Order',
-      html: `<h2>New Order Received</h2>${orderDetails}`,
-    });
+    try {
+      await transporter.sendMail({
+        from: `"Atelier Rosso" <${process.env.GMAIL_USER}>`,
+        to: 'atelierrosso1@gmail.com',
+        subject: 'New Cake Order',
+        html: `<h2>New Order Received</h2>${orderDetails}`,
+      });
+      console.log('Email sent successfully!');
+    } catch (err) {
+      console.error('Failed to send email:', err);
+    }
   }
 
   res.status(200).json({ received: true });

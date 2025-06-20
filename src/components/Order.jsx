@@ -22,6 +22,13 @@ const GELATO_CAKE_FLAVORS = [
   "Birthday Cake",
 ];
 
+const SERVING_SIZES = {
+  Small: "4-6 people",
+  Medium: "8-10 people",
+  Large: "12-15 people",
+  ExtraLarge: "16-20 people",
+};
+
 
 const Order = () => {
   const [formData, setFormData] = useState({
@@ -108,7 +115,6 @@ const Order = () => {
 
   return (
     <div className="order-page">
-      <h1>CURRENTLY NOT ACCEPTING ORDERS (PAYMENT SYSTEM UNDER DEVELOPMENT)</h1>
       <h1>Order Your Cake</h1>
       <form onSubmit={handleSubmit} className="order-form">
         <div className="form-group">
@@ -215,9 +221,10 @@ const Order = () => {
             ).map(([size, price]) => {
               const isPistachio = formData.flavor === "Pistachio";
               const displayPrice = isPistachio ? price + PISTACHIO_SURCHARGE : price;
+              const servingSize = SERVING_SIZES[size]; // Get serving size for the current size
               return (
                 <option key={size} value={size}>
-                  {size} (${displayPrice}{isPistachio ? " - Pistachio" : ""})
+                  {size} ({servingSize}) - ${displayPrice}
                 </option>
               );
             })}

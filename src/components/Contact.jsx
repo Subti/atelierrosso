@@ -11,8 +11,10 @@ export default function Contact() {
         <p>
           Click the button below to place an order for a custom cake. Choose your flavor, pickup date, and time!
         </p>
-        <Link to="/order" className="contact-button">
-          Place an Order
+        <Link to="/order">
+          <button className="contact-button">
+            Place an Order
+          </button>
         </Link>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/Footer.css";
 
 export default function Footer() {
   return (
@@ -6,16 +7,8 @@ export default function Footer() {
       <div className="contact-content" id="contact">
         <div className="contact-info">
           <h2>Contact Us</h2>
-          <table className="center-table">
-            <tbody>
-              <tr>
-                <td><b>Email:</b> atelierrosso1@gmail.com</td>
-              </tr>
-              <tr>
-                <td><b>Phone:</b> (613) 824-8184</td>
-              </tr>
-            </tbody>
-          </table>
+          <p><b>Email:</b> atelierrosso1@gmail.com</p>
+          <p><b>Phone:</b> (613) 824-8184</p>
         </div>
         <div className="hours-info">
           <h2>Hours</h2>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import "../css/Success.css";
 
 export default function Success() {
   const [order, setOrder] = useState(null);
@@ -50,8 +51,8 @@ export default function Success() {
 
   return (
     <div className="order-page">
-      <h1>Thank You for Your Order!</h1>
-      <p>Your payment was successful and your order has been received.</p>
+      <h1 className="print-hide">Thank You for Your Order!</h1>
+      <p className="print-hide">Your payment was successful and your order has been received.</p>
       <div className="order-summary">
         <h2>Order Summary</h2>
         <ul>
@@ -67,9 +68,22 @@ export default function Success() {
           <li><strong>Amount Paid:</strong> ${order.payment_amount}</li>
         </ul>
       </div>
-      <Link to="/" className="order-button" style={{ marginTop: "2rem" }}>
-        Back to Home
+      <Link to="/" style={{ marginTop: "2rem" }}>
+        <button className="order-button">Back to Home</button>
       </Link>
+      <button
+        className="order-button"
+        style={{ marginTop: "1rem" }}
+        onClick={() => {
+          if (order) {
+            window.print();
+          } else {
+            alert("Order details are still loading. Please wait.");
+          }
+        }}
+      >
+        Print Receipt
+      </button>
     </div>
   );
 }
