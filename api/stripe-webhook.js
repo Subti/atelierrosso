@@ -84,7 +84,7 @@ export default async function handler(req, res) {
     try {
       await resend.emails.send({
         from: 'Atelier Rosso <orders@atelierrosso.ca>',
-        to: 'johnpaulsaliba@gmail.com',
+        to: session.customer_email,
         subject: 'Order Confirmation - Atelier Rosso',
         html: `<h2>Thank You for Your Order!</h2><p>Here are your order details:</p>${orderDetails} <br> <br> <p>This is an automated email, please do not reply. For any questions or concerns please contact atelierrosso1@gmail.com</p>`,
         reply_to: 'atelierrosso1@gmail.com',
