@@ -1,8 +1,10 @@
 import { buffer } from 'micro';
 import Stripe from 'stripe';
 import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const config = {
   api: {
@@ -37,6 +39,7 @@ export default async function handler(req, res) {
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
     console.log('Checkout session completed:', session);
+    console.log('Customer email from session:', session.customer_email);
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -67,8 +70,8 @@ export default async function handler(req, res) {
   `;
 
     try {
-      await transporter.sendMail({
-        from: `"Atelier Rosso" <${process.env.GMAIL_USER}>`,
+      await resend.emails.send({
+        from: `"Atelier Rosso" <orders@atelierrosso.ca>`,
         to: 'atelierrosso1@gmail.com',
         subject: 'New Cake Order',
         html: `<h2>New Order Received</h2>${orderDetails}`,
@@ -77,19 +80,18 @@ export default async function handler(req, res) {
     } catch (err) {
       console.error('Failed to send email:', err);
     }
-  }
 
-  if (session.customer_email) {
     try {
-      await transporter.sendMail({
-        from: `"Atelier Rosso" <${process.env.GMAIL_USER}>`,
-        to: session.customer_email,
-        subject: 'Order Confirmation',
-        html: `<h2>Thank You for Your Order!</h2><p>Here are your order details:</p>${orderDetails}`,
+      await resend.emails.send({
+        from: 'Atelier Rosso <orders@atelierrosso.ca>',
+        to: 'johnpaulsaliba@gmail.com',
+        subject: 'Order Confirmation - Atelier Rosso',
+        html: `<h2>Thank You for Your Order!</h2><p>Here are your order details:</p>${orderDetails} <br> <br> <p>This is an automated email, please do not reply. For any questions or concerns please contact atelierrosso1@gmail.com</p>`,
+        reply_to: 'atelierrosso1@gmail.com',
       });
-      console.log('Email sent to customer successfully!');
+      console.log('Confirmation email sent successfully!');
     } catch (err) {
-      console.error('Failed to send email to customer:', err);
+      console.error('Failed to send confirmation email:', err);
     }
   }
 
