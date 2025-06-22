@@ -1,10 +1,14 @@
 import { buffer } from 'micro';
 import Stripe from 'stripe';
+import { Pool } from 'pg';
 import nodemailer from 'nodemailer';
 import { Resend } from 'resend';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const resend = new Resend(process.env.RESEND_API_KEY);
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
 
 export const config = {
   api: {
@@ -22,15 +26,12 @@ export default async function handler(req, res) {
 
   try {
     const buf = await buffer(req);
-    console.log('Raw request body buffer:', buf.toString());
-    console.log('Stripe signature header:', sig);
 
     event = stripe.webhooks.constructEvent(
       buf,
       sig,
       process.env.STRIPE_WEBHOOK_SECRET
     );
-    console.log('Stripe event constructed successfully:', event.type);
   } catch (err) {
     console.error('Webhook Error:', err.message);
     return res.status(400).send(`Webhook Error: ${err.message}`);
@@ -38,16 +39,29 @@ export default async function handler(req, res) {
 
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
-    console.log('Checkout session completed:', session);
-    console.log('Customer email from session:', session.customer_email);
 
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS,
-      },
-    });
+    try {
+      const insertResult = await pool.query(
+        `INSERT INTO orders (full_name, email, phone_number, cake_type, cake_flavor, cake_size, payment_amount, payment_date, pickup_time, comments)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+         RETURNING id`,
+        [
+          session.metadata.fullName,
+          session.metadata.email,
+          session.metadata.phoneNumber,
+          session.metadata.cakeType,
+          session.metadata.flavor,
+          session.metadata.size,
+          session.amount_total / 100,
+          new Date(),
+          new Date(session.metadata.pickupTime),
+          session.metadata.comments,
+        ]
+      );
+      console.log('Order inserted into database:', insertResult.rows[0].id);
+    } catch (err) {
+      console.error('Failed to insert order into database:', err);
+    }
 
     const orderDetails = `
     <h2>Order Summary</h2>

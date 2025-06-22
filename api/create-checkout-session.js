@@ -1,10 +1,6 @@
 import Stripe from 'stripe';
-import { Pool } from 'pg';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -84,27 +80,6 @@ export default async function handler(req, res) {
   }
 
   try {
-    const paymentDate = new Date();
-
-    const insertResult = await pool.query(
-      `INSERT INTO orders (full_name, email, phone_number, cake_type, cake_flavor, cake_size, payment_amount, payment_date, pickup_time, comments)
-     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
-     RETURNING id`,
-      [
-        fullName,
-        email,
-        phoneNumber,
-        cakeType,
-        flavor,
-        size,
-        paymentAmount / 100,
-        paymentDate,
-        pickupDate,
-        comments,
-      ]
-    );
-    const orderId = insertResult.rows[0].id;
-
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
