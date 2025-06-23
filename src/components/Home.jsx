@@ -71,17 +71,14 @@ export default function Home() {
       <section className="hero">
         <div className="hero-content">
           <div className="text">
-            <h1>Delight in Every Bite!</h1>
-            <p>Experience the ultimate indulgence with our Yule log cakes! Rich, festive, and utterly irresistible, each bite promises a symphony of flavors. Visit our shop and treat yourself to a holiday treat like no other! Also available in white cake.</p>
+            <h1>Take On the Chocoberry Challenge!</h1>
+            <p>Join us on Thursdays and Fridays to reserve your spot for the ultimate Chocoberry Challenge! Conquer this colossal creation of pistachio, chocolate, cream, and strawberries in just 75 seconds. Do you have what it takes?</p>
             <div className="button-container">
               <button onClick={handleMarkerClick} className="hero-button">Visit Us Now!</button>
-              <Link to="/order">
-                <button className="hero-button cake-button">Order a Cake</button>
-              </Link>
             </div>
           </div>
           <div className="image">
-            <img src="/images/IMG_2711.jpg" alt="" />
+            <img src="/images/1234.jpg" alt="" />
           </div>
         </div>
       </section>
