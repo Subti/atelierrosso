@@ -43,8 +43,8 @@ export default async function handler(req, res) {
     try {
       const insertResult = await pool.query(
         `INSERT INTO orders (full_name, email, phone_number, cake_type, cake_flavor, cake_size, payment_amount, payment_date, pickup_time, comments)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
-         RETURNING id`,
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+     RETURNING id`,
         [
           session.metadata.fullName,
           session.metadata.email,
@@ -58,15 +58,14 @@ export default async function handler(req, res) {
           session.metadata.comments,
         ]
       );
-      console.log('Order inserted into database:', insertResult.rows[0].id);
-    } catch (err) {
-      console.error('Failed to insert order into database:', err);
-    }
+      const orderId = insertResult.rows[0].id;
 
-    const orderDetails = `
+      console.log('Order inserted into database:', orderId);
+
+      const orderDetails = `
     <h2>Order Summary</h2>
     <ul style="list-style: none; padding: 0;">
-      <li><strong>Order Number:</strong> ${session.metadata.orderId}</li>
+      <li><strong>Order Number:</strong> ${orderId}</li> <!-- Use the generated orderId -->
       <li><strong>Name:</strong> ${session.metadata.fullName}</li>
       <li><strong>Phone:</strong> ${session.metadata.phoneNumber}</li>
       <li><strong>Email:</strong> ${session.metadata.email}</li>
@@ -82,6 +81,9 @@ export default async function handler(req, res) {
       )}</li>
     </ul>
   `;
+    } catch (err) {
+      console.error('Failed to insert order into database:', err);
+    }
 
     try {
       await resend.emails.send({

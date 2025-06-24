@@ -98,7 +98,6 @@ export default async function handler(req, res) {
       ],
       customer_email: email,
       metadata: {
-        orderId: orderId.toString(),
         fullName,
         email,
         phoneNumber,
