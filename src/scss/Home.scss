@@ -110,6 +110,20 @@ h3 {
   }
 }
 
+.divider {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.divider img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .button-container {
   display: flex;
   gap: 10px;
