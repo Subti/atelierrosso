@@ -373,6 +373,9 @@ h3 {
   .hero {
     height: auto;
     min-height: 100vh;
+    box-sizing: border-box;
+    margin-top: -20px;
+    padding: 0;
   }
 
   .hero-content {
