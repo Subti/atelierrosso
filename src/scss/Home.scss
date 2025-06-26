@@ -4,7 +4,7 @@
 .home {
   margin: 0;
   padding: 0;
-  background-color: #f4e8d1;
+  background-color: $content-bg-color;
   width: 100%;
   box-sizing: border-box;
   min-height: 100vh;
@@ -16,6 +16,12 @@ img {
   -moz-user-select: none;
   -ms-user-select: none;
   pointer-events: none;
+}
+
+h1,
+h2,
+h3 {
+  color: $hero-h1-color;
 }
 
 .no-underline {
@@ -49,6 +55,12 @@ img {
   justify-content: space-between;
   width: 100%;
   height: 100%;
+  padding: 1rem 0;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  color: $hero-h1-color;
 }
 
 .hero .text {
@@ -113,14 +125,31 @@ img {
 .about {
   background-color: $about-bg-color;
   padding: 50px 0px;
-  width: 100%;
+  max-width: 800px;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
+  text-align: left;
+  margin: 10rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .about-title {
+    margin-left: 0.5rem;
+    font-size: 3rem;
+  }
 
   .text {
     width: 80%;
-    margin: 0 auto;
+    font-size: 1.2rem;
     box-sizing: border-box;
     color: $hero-text-color;
+  }
+
+  p {
+    margin-left: 0.5rem;
   }
 }
 
@@ -144,7 +173,9 @@ img {
   box-sizing: border-box;
   opacity: 0;
   transform: translateX(0);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
 }
 
 .gelato .image img,
@@ -355,6 +386,7 @@ img {
   .hero .hero-button {
     font-size: 1rem;
     padding: 10px 20px;
+    margin-bottom: 3rem;
   }
 
   .hero .text,

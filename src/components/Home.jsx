@@ -83,12 +83,16 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="divider">
+        <img src="/images/divider.svg" alt="" />
+      </div>
+
 
       <section className="about">
         <div className="text">
-          <h2>About Us</h2>
-          <p className="confined-text">
-            We are a family-run desserterie dedicated to bringing you the finest sweet treats. All our pastries are freshly baked daily, and we craft our own gelato in-house. Come and experience the love and passion we put into every bite!
+          <h1 className="about-title">Who Are We?</h1>
+          <p>
+            Welcome to Atelier Rosso, a family-owned desserterie where passion meets perfection. Every day, we pour our hearts into crafting the finest sweet creations, from freshly baked pastries to our signature gelato made entirely in-house. Our desserts are more than just treats—they're a celebration of flavor. Whether you're indulging in a classic favorite or exploring one of our seasonal specialties, you'll taste the love and dedication in every bite.
           </p>
         </div>
       </section>

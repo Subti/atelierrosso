@@ -1,11 +1,17 @@
 @import 'variables';
 
 .footer {
-  background-color: $contact-bg-color;
+  background-color: $footer-bg-color;
   color: $contact-text-color;
   padding: $section-padding;
   width: 100%;
   box-sizing: border-box;
+
+  h1,
+  h2,
+  h3 {
+    color: $footer-h-color;
+  }
 
   .contact-content {
     display: flex;
@@ -22,18 +28,15 @@
     min-width: 250px;
 
     h2 {
-      font-family: 'Coiny', 'Open Sans', sans-serif;
       font-size: 2rem;
       margin-bottom: 1rem;
-      color: $hero-text-color;
     }
 
     p,
     td {
       font-size: 1.2rem;
       margin: 0.5rem 0;
-      color: $hero-text-color;
-      font-family: $font-family;
+      color: $footer-text-color;
     }
   }
 
@@ -56,7 +59,7 @@
 
       p {
         margin: 0;
-        color: $hero-text-color;
+        color: $footer-text-color;
       }
     }
   }
